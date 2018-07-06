@@ -1,0 +1,37 @@
+body {
+    margin-left: 10px;
+}
+
+.image-block {
+    display: inline-block;
+}
+
+.image-block_loaded {
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.image-block__label {
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 0;
+}
+
+#file {
+    margin-left: 10px;
+}
+
+.nav__button {
+
+}
+
+.nav__button_clear {
+
+}
+
+.nav__button_predict {
+
+}
+
