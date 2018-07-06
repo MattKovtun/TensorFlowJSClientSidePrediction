@@ -1,5 +1,11 @@
 body {
     margin-left: 10px;
+    font-family: Sans-Serif sans-serif;
+    font-size: 13px;
+}
+
+.title {
+    text-align: center;
 }
 
 .image-block {
@@ -23,15 +29,10 @@ body {
     margin-left: 10px;
 }
 
-.nav__button {
-
+.file-form {
+    margin-top:20px;
+    text-align: center;
 }
 
-.nav__button_clear {
 
-}
-
-.nav__button_predict {
-
-}
 

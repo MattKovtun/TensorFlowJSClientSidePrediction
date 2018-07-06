@@ -3,8 +3,8 @@ let model;
 const modelURL = 'http://localhost:5000/model';
 
 const preview = document.getElementById("preview");
-const predictButton = document.querySelector("#predict");
-const clearButton = document.querySelector("#clear");
+const predictButton = document.getElementById("predict");
+const clearButton = document.getElementById("clear");
 
 
 const predict = async (modelURL) => {
@@ -15,7 +15,7 @@ const predict = async (modelURL) => {
         const data = new FormData();
         data.append('file', img);
 
-        const image = await fetch("/api/prepare",
+        const procImage = await fetch("/api/prepare",
             {
                 method: 'POST',
                 body: data
@@ -24,21 +24,22 @@ const predict = async (modelURL) => {
         }).then(t => {
             return tf.tensor2d(t['image']);
         });
-        const im = tf.reshape(image, shape = [1, 28, 28, 1]);
-        const prediction = model.predict(im);
+        const prediction = model.predict(tf.reshape(procImage, shape = [1, 28, 28, 1]));
         const label = prediction.argMax(axis = 1).get([0]);
+        renderImageLabel(img, label);
+    })
+};
 
-        const reader = new FileReader();
-        reader.onload = () => {
-            preview.innerHTML += `<div class="image-block">
+const renderImageLabel = (img, label) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+        preview.innerHTML += `<div class="image-block">
                                       <img src="${reader.result}" class="image-block_loaded" id="source"/>
                                        <h2 class="image-block__label">${label}</h2>
                                       </div>`;
 
-        };
-        reader.readAsDataURL(img);
-    })
-
+    };
+    reader.readAsDataURL(img);
 };
 
 
