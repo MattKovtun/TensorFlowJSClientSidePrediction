@@ -38,8 +38,8 @@ def preprocessing(file):
     data = np.fromstring(in_memory_file.getvalue(), dtype=np.uint8)
     img = cv2.imdecode(data, 0)
     res = cv2.resize(img, dsize=(28, 28), interpolation=cv2.INTER_CUBIC)
-    # file.save("UPLOAD/img.png") # saving uploaded img
-    # cv2.imwrite("UPLOAD/test.png", res) # saving processed image
+    # file.save("static/UPLOAD/img.png") # saving uploaded img
+    # cv2.imwrite("static/UPLOAD/test.png", res) # saving processed image
     return res
 
 
