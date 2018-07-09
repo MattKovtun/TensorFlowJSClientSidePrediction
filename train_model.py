@@ -15,10 +15,9 @@ from keras import backend as K
 
 import tensorflowjs as tfjs
 
-
 batch_size = 128
 num_classes = 10
-epochs = 1
+epochs = 10
 
 # input image dimensions
 img_rows, img_cols = 28, 28
@@ -72,6 +71,4 @@ score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
-
 tfjs.converters.save_keras_model(model, "model_js")
-
