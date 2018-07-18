@@ -28,7 +28,7 @@ def model():
 
 
 @app.route('/<path:path>')
-def send_js(path):
+def load_shards(path):
     return send_from_directory('model_js', path)
 
 
