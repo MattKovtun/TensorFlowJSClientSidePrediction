@@ -10,22 +10,24 @@ const fileInput = document.getElementById('file');
 
 const predict = async (modelURL) => {
     if (!model) model = await tf.loadModel(modelURL);
-    let files = fileInput.files;
+    const files = fileInput.files;
 
     [...files].map(async (img) => {
         const data = new FormData();
         data.append('file', img);
 
-        const procImage = await fetch("/api/prepare",
+        const processedImage = await fetch("/api/prepare",
             {
                 method: 'POST',
                 body: data
             }).then(response => {
-            return response.json();
-        }).then(t => {
-            return tf.tensor2d(t['image']);
-        });
-        const prediction = model.predict(tf.reshape(procImage, shape = [1, 28, 28, 1]));
+                return response.json();
+            }).then(result => {
+                return tf.tensor2d(result['image']);
+            });
+
+        // shape has to be the same as it was for training of the model
+        const prediction = model.predict(tf.reshape(processedImage, shape = [1, 28, 28, 1]));
         const label = prediction.argMax(axis = 1).get([0]);
         renderImageLabel(img, label);
     })
@@ -37,7 +39,7 @@ const renderImageLabel = (img, label) => {
         preview.innerHTML += `<div class="image-block">
                                       <img src="${reader.result}" class="image-block_loaded" id="source"/>
                                        <h2 class="image-block__label">${label}</h2>
-                                      </div>`;
+                              </div>`;
 
     };
     reader.readAsDataURL(img);
