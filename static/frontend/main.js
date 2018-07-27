@@ -9,7 +9,8 @@ const numberOfFiles = document.getElementById("number-of-files");
 const fileInput = document.getElementById('file');
 
 const predict = async (modelURL) => {
-    if (!model) model = await tf.loadModel(modelURL);
+    // load model here
+
     const files = fileInput.files;
 
     [...files].map(async (img) => {
@@ -21,14 +22,15 @@ const predict = async (modelURL) => {
                 method: 'POST',
                 body: data
             }).then(response => {
-                return response.json();
-            }).then(result => {
-                return tf.tensor2d(result['image']);
-            });
+            return response.json();
+        }).then(result => {
+            // return processed image
+        });
 
+        // reshape image
         // shape has to be the same as it was for training of the model
-        const prediction = model.predict(tf.reshape(processedImage, shape = [1, 28, 28, 1]));
-        const label = prediction.argMax(axis = 1).get([0]);
+
+        const label = 1;
         renderImageLabel(img, label);
     })
 };
