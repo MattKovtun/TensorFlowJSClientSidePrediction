@@ -23,7 +23,7 @@ def prepare():
 
 @app.route('/model')
 def model():
-    json_data = json.load(open("./model_js/model.json"))
+    json_data = json.load(open("model_js/model.json"))
     return jsonify(json_data)
 
 
