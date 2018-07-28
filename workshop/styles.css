@@ -1,0 +1,75 @@
+body {
+    margin-left: 10px;
+    font-family: Sans-Serif sans-serif;
+    font-size: 15px;
+}
+
+.title {
+    text-align: center;
+}
+
+.image-block {
+    display: inline-block;
+}
+
+.image-block_loaded {
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.image-block__label {
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+.file-form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.file-form__select-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-form__select-file_label {
+    cursor: pointer;
+    display: block;
+    font-size: 21px;
+
+}
+
+.file-form__files {
+    display: block;
+    margin-top: 2px;
+}
+
+.file-form__button {
+    margin-top: 4px;
+    font-size: 21px;
+    padding: 5px 20px;
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0 0 2px inset;
+    background-color: #27ae60;
+    border: none;
+    cursor: pointer;
+}
+
+.file-form__button:hover {
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: rgba(30, 22, 54, 0.7) 0 0 0 40px inset;
+
+}
+
+.preview {
+    text-align: center;
+}
