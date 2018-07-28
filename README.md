@@ -11,5 +11,7 @@ You can download my model or train a new one. Don't forget to convert it to an a
 ##### Usage
 Simply run `app.py`, open link in browser<br>
 Upload files and press predict, if you select around 100-300 files, you can observe how browser instantly eats your CPU. :)
+#### For more details please read:
+https://medium.com/@mattkovtun/client-side-prediction-with-tensorflow-js-e143ed53235b
 
 ### Enjoy!
