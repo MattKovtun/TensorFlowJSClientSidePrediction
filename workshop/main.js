@@ -11,6 +11,8 @@ const fileInput = document.getElementById('file');
 
 const predict = async (modelURL) => {
     // load model here
+    if (!model) model = await tf.loadModel(modelURL);
+    // model.summary();
 
     const files = fileInput.files;
 
@@ -25,13 +27,18 @@ const predict = async (modelURL) => {
             }).then(response => {
             return response.json();
         }).then(result => {
-            // return processed image
+            return tf.tensor2d(result["image"]);
+
         });
 
         // reshape image
         // shape has to be the same as it was for training of the model
+        const reshapedImage = tf.reshape(processedImage, [1, 28, 28, 1]);
 
-        const label = 1;
+
+        const prediction = model.predict(reshapedImage);
+        const label = prediction.argMax(axis = 1).get([0]);
+
         renderImageLabel(img, label);
     })
 };
